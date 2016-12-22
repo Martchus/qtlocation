@@ -5,6 +5,9 @@ SOURCES += \
 
 load(qml_plugin)
 
+LIBS_PRIVATE += -L$$MODULE_BASE_OUTDIR/lib -lclip2tri$$qtPlatformTargetSuffix() -lclipper$$qtPlatformTargetSuffix() -lpoly2tri$$qtPlatformTargetSuffix()
+QMAKE_LIBS_PRIVATE += -lclip2tri$$qtPlatformTargetSuffix() -lclipper$$qtPlatformTargetSuffix() -lpoly2tri$$qtPlatformTargetSuffix()
+
 OTHER_FILES += \
     plugin.json \
     qmldir
