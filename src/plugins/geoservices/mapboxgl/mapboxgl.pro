@@ -38,11 +38,10 @@ qtConfig(icu) {
     include(../../../3rdparty/icu_dependency.pri)
 }
 
-# When building for Windows with dynamic OpenGL, this plugin
-# can only run with ANGLE because Mapbox GL requires at least
+# Enforce use of ANGLE because Mapbox GL requires at least
 # OpenGL ES and does not use QOpenGLFunctions for resolving
 # the OpenGL symbols. -lopengl32 only gives OpenGL 1.1.
-win32:qtConfig(dynamicgl) {
+win32:!qtConfig(angle) {
     qtConfig(combined-angle-lib): LIBS_PRIVATE += -l$${LIBQTANGLE_NAME}
     else: LIBS_PRIVATE += -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME}
 }
